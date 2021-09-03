@@ -18,7 +18,7 @@ if(postTime != oldTime){
     message = data[1].split("Discussion Reply, ")[1].split("\\\"")[0].split(",")[1].replace(/&quot;/g, "\"");
     title = data[1].split("</span>")[0].split("\\\">")[2];
     delete data;
-    new Notification(title, {body: message, icon: "https://techpro-services.github.io/Images/logo_new.png"});
+    new Notification(title, {body: message, icon: "https://techpro-services.github.io/Images/Ping.png"});
     delete message, title, postTime;
 }
 }
