@@ -1,10 +1,10 @@
 {
     "manifest_version": 2,
 
-    "name": "TechPro Services Extension",
-    "short_name": "TechPro Services",
+    "name": "K12 Enhancer by TechPro Services",
+    "short_name": "K12 Enhancer",
     "description": "The TechPro Services Extension syncs your class connects with your friends, upgrades the NewRow icon, and notifies you in real-time about discussions your classmates are part of",
-    "version": "1.3.2",
+    "version": "1.5.2",
     "author": "TechPro Services <phineasm4065@utahvirtual.org>",
     "homepage_url": "https://techpro-services.github.io/",
     "icons": {
@@ -15,22 +15,23 @@
         "default_icon": {
             "19": "img/Logo_Series.png"
         },
-        "default_title": "Class Connect Sync"
+        "default_title": "K12 Enhancer"
     },
     "content_scripts": [
-    {
-    "matches": ["https://login-learn.k12.com/*"],
-    "js": ["deps/jquery.js", "deps/daylight-scc.js", "scc/scc-sync.js"],
-    "run_at": "document_end"
-    },
     {
     "matches": ["https://learning.k12.com/*"],
     "js": ["dn/dn.js"],
     "run_at": "document_end"
     },
     {
+    "matches": ["https://learning.k12.com/d2l/le/*/discussions/threads/*"],
+    "js": ["dc/inject.js", "dc/chat.js", "dc/socket.io.js"],
+    "css": ["dc/main.css"],
+    "run_at": "document_end"
+    },
+    {
     "matches": ["https://smart.newrow.com/*", "https://www.newrow.com/"],
-    "js": ["scc/newrow.js"]
+    "js": ["newrow/newrow.js"]
     }
     ],
     "background": {

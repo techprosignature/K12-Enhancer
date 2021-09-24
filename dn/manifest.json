@@ -1,0 +1,28 @@
+{
+    "manifest_version": 2,
+
+    "name": "Discussion Notifier Extension",
+    "short_name": "Discussion Notifier",
+    "description": "The Discussion Notifier notifies you in real-time about discussions your classmates are part of",
+    "version": "1.0.2",
+    "author": "TechPro Services <phineasm4065@utahvirtual.org>",
+    "homepage_url": "https://techpro-services.github.io/",
+    "icons": {
+        "128": "Ping.png"
+    },
+
+    "browser_action": {
+        "default_icon": {
+            "19": "Ping.png"
+        },
+        "default_title": "Discussion Notifier"
+    },
+    "content_scripts": [
+    {
+    "matches": ["https://learning.k12.com/*"],
+    "js": ["dn.js"],
+    "run_at": "document_end"
+    }
+    ],
+    "permissions": ["webRequest", "storage"]
+}
