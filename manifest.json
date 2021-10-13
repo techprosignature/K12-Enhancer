@@ -3,8 +3,8 @@
 
     "name": "K12 Enhancer by TechPro Services",
     "short_name": "K12 Enhancer",
-    "description": "The TechPro Services Extension syncs your class connects with your friends, upgrades the NewRow icon, and notifies you in real-time about discussions your classmates are part of",
-    "version": "1.5.2",
+    "description": "The K12 Enhancer extension by TechPro Services applies a green gradient to your messages, modernizes NewRow's icon, and allows you to chat with your classmates in school discussions in near-realtime. Please do not copy or edit any part of this extension.",
+    "version": "1.5.6",
     "author": "TechPro Services <phineasm4065@utahvirtual.org>",
     "homepage_url": "https://techpro-services.github.io/",
     "icons": {
@@ -13,7 +13,7 @@
 
     "browser_action": {
         "default_icon": {
-            "19": "img/Logo_Series.png"
+            "19": "img/logo_static.png"
         },
         "default_title": "K12 Enhancer"
     },
@@ -34,8 +34,5 @@
     "js": ["newrow/newrow.js"]
     }
     ],
-    "background": {
-        "service_worker": "background.js"
-    },
     "permissions": ["webRequest", "storage"]
 }

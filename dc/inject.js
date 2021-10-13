@@ -4,6 +4,7 @@ button.id = "startChat";
 button.innerText = "Try new experience"
 button.addEventListener('click', inject);
 document.body.insertAdjacentElement("beforeEnd",button);
+var discussion;
 
 // Method to get authentication data
 var yourCustomJavaScriptCode = `
@@ -20,11 +21,13 @@ var authentication = document.querySelector("auth").innerText;
 console.log(`Authentication: ${authentication}`);
 
 function inject(){
+discussion = document.querySelector("h2[class*='d2l-page-title d2l-heading bsi-set-solid vui-heading-2'").innerText;
 document.querySelector("div[role*='main']").classList.add("blocked");
 var CHAT = document.createElement('div');
 CHAT.id = "CHAT";
 CHAT.innerHTML = 
-`<div id="chat">
+`<button id="closechat"></button>
+<div id="chat">
 </div>
 <div id="input">
         <input id="textinput" type="text" placeholder="Type a message" />
@@ -32,5 +35,5 @@ CHAT.innerHTML =
 </div>`;
 document.body.insertAdjacentElement("afterBegin",CHAT);
 button.classList.add("blocked");
-CHAT.addEventListener('click', chat());
+CHAT.addEventListener('click', chat_manager());
 }

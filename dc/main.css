@@ -15,6 +15,7 @@ body{
     top: 0;
     bottom: 0;
     height: fit-content;
+    height: -moz-fit-content;
     margin: auto;
     background-image: linear-gradient(90deg, #00ca63, #25ff88);
     color: white;
@@ -105,10 +106,24 @@ body{
     transition: 0.2s;
     cursor: pointer;
 }
-#textsubmit:hover{
+#closechat{
+    position: absolute;
+    right: 0;
+    height: 50px;
+    width: 50px;
+    margin: 10px;
+    border: none;
+    background-color: #0000;
+    background-image: url("https://techpro-services.github.io/techproconnect/Images/close.svg");
+    background-size: contain;
+    color: white;
+    transition: 0.2s;
+    cursor: pointer;
+}
+#textsubmit:hover, #closechat:hover{
     filter: brightness(1.5);
 }
-#textsubmit:active{
+#textsubmit:active, #closechat:active{
     filter: brightness(2);
 }
 /* Chat */
@@ -149,12 +164,17 @@ body{
 .message:hover{
     filter: brightness(1.5);
 }
+
+/* Cancel D2L formatting for message */
+.message p{
+    margin: 0 !important;
+}
 /* make messages from the same user closer */
 .messageBelow{
     margin-top: 2px;
 }
 .message-sender{
-    font-size: 14px;
+    font-size: 80%;
     color: black;
     width: fit-content;
     width: -moz-fit-content;
