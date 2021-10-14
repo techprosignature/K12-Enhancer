@@ -110,11 +110,17 @@ function chat_manager() {
         }
         if (lastMessageUser != username) {
             HTMLmessage.innerHTML = `<div class="message-sender">${username}</div>${message}`;
+            let HTMLprofile = document.createElement('div');
+            HTMLprofile.classList = (username != user) ? "profile" : "profile profile-me";
+            HTMLprofile.style.backgroundImage = `url(${userProfile})`;
+            chat.insertAdjacentElement('beforeEnd', HTMLprofile);
+            chat.insertAdjacentElement('beforeEnd', HTMLmessage).scrollIntoView();
+
         } else {
             HTMLmessage.innerHTML = message;
             HTMLmessage.classList += " messageBelow";
+            chat.insertAdjacentElement('beforeEnd', HTMLmessage).scrollIntoView();
         }
-        chat.insertAdjacentElement('beforeEnd', HTMLmessage).scrollIntoView();
         lastMessageUser = username;
     }
 

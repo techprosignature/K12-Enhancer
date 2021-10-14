@@ -26,9 +26,9 @@ document.querySelector("div[role*='main']").classList.add("blocked");
 var CHAT = document.createElement('div');
 CHAT.id = "CHAT";
 CHAT.innerHTML = 
-`<button id="closechat"></button>
-<div id="chat">
+`<div id="chat">
 </div>
+<button id="closechat"></button>
 <div id="input">
         <input id="textinput" type="text" placeholder="Type a message" />
         <button id="textsubmit"></button>
