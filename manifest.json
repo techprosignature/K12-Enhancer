@@ -3,17 +3,17 @@
 
     "name": "K12 Enhancer by TechPro Services",
     "short_name": "K12 Enhancer",
-    "description": "The K12 Enhancer extension by TechPro Services applies a green gradient to your messages, modernizes NewRow's icon, and allows you to chat with your classmates in school discussions in near-realtime. Please do not copy or edit any part of this extension.",
-    "version": "1.5.6",
+    "description": "K12 Enhancer applies a green gradient to NewRow and allows you to chat with your classmates in school discussions in near-realtime.",
+    "version": "1.5.8",
     "author": "TechPro Services <phineasm4065@utahvirtual.org>",
     "homepage_url": "https://techpro-services.github.io/",
     "icons": {
-        "128": "img/logo_static.png"
+        "1280": "img/K12 Enhancer.png"
     },
 
     "browser_action": {
         "default_icon": {
-            "19": "img/logo_static.png"
+            "1280": "img/K12 Enhancer.png"
         },
         "default_title": "K12 Enhancer"
     },
@@ -22,6 +22,10 @@
     "matches": ["https://learning.k12.com/*"],
     "js": ["dn/dn.js"],
     "run_at": "document_end"
+    },
+    {
+    "matches": ["https://learning.k12.com/*"],
+    "js": ["K12/K12.js"]
     },
     {
     "matches": ["https://learning.k12.com/d2l/le/*/discussions/threads/*"],
