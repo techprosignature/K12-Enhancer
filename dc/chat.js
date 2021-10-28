@@ -9,25 +9,9 @@ function chat_manager() {
     var numberOfMessages = 1;
     var postedMessages = 1;
 
-    // Initialize socket.io server connection
-    const socket = io(document.location.hostname + ":8000", {
-        transports: ['websocket', 'polling']
-    });
-    socket.on("connect", function() {
-        console.log("Socket Connected");
-        socket.emit("join", {
-            username: user,
-            ua: navigator.userAgent,
-            room: room
-        });
-    });
-    socket.on("log", function(data) {
-        console.log("New user: " + data.ua);
-    });
-
     // Handle messages that user sends
     function enterMessage() {
-        let message = textinput.value;
+        let message = `${textinput.value}<span class="k12-type" style="display: none;">k12-connect</span>`;
         if (message != "") {
             textinput.value = "";
             let xhr = new XMLHttpRequest();
@@ -63,9 +47,9 @@ function chat_manager() {
                 if(replyPost != data.split("data-postId=\\\"")[1].split("\\\"")[0]){
                     if(runtime == 0){
                         postedMessages++;
+                        replyPost = data.split("data-postId=\\\"")[1].split("\\\"")[0];
                         chrome.storage.local.set({postTime: replyPost}, function() {
                         });
-                        replyPost = data.split("data-postId=\\\"")[1].split("\\\"")[0];
                         receiveMessage(username, messageHTML, userProfile);
                     }
                     else if(runtime == 2){
@@ -88,11 +72,13 @@ function chat_manager() {
     function receiveMessage(username, message, userProfile){
         console.log(`Received ${message} from ${username}`);
         let HTMLmessage = document.createElement('div');
+        let classList = (message.search(`<span class="k12-type" style="display: none;">k12-connect</span>`) == -1) ? "message d2l" : "message k12";
+        classList = (username == user) ? `${classList} from-me` : `${classList} from-other`
         if(username == user){
-            HTMLmessage.classList = "message from-me";
+            HTMLmessage.classList = classList;
         }
         else{
-            HTMLmessage.classList = "message from-other";
+            HTMLmessage.classList = classList;
             if(document.visibilityState !== 'visible'){
                 title.text = "(1) K12 Connect";
                 messageText = message.split("<p>")[1].split("</p>")[0];
@@ -125,6 +111,7 @@ function chat_manager() {
     }
 
     // Handle system messages
+    /*
     socket.on('system-message', function(data) {
         console.log(`System message: ${data}`);
         let HTMLmessage = document.createElement('div');
@@ -133,6 +120,7 @@ function chat_manager() {
         chat.insertAdjacentElement('beforeEnd', HTMLmessage).scrollIntoView();
         lastMessageUser = 'system';
     });
+    */
     // Get K12 data
     var organization = document.location.href.split("/")[5];
     var user = document.querySelector('nav').children[0].children[0].children[1].children[4].children[0].children[0].children[0].children[1].innerText;

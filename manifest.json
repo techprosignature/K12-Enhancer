@@ -4,7 +4,7 @@
     "name": "K12 Enhancer by TechPro Services",
     "short_name": "K12 Enhancer",
     "description": "K12 Enhancer applies a green gradient to NewRow and allows you to chat with your classmates in school discussions in near-realtime.",
-    "version": "1.5.8",
+    "version": "1.5.9",
     "author": "TechPro Services <phineasm4065@utahvirtual.org>",
     "homepage_url": "https://techpro-services.github.io/",
     "icons": {
@@ -29,7 +29,7 @@
     },
     {
     "matches": ["https://learning.k12.com/d2l/le/*/discussions/threads/*"],
-    "js": ["dc/inject.js", "dc/chat.js", "dc/socket.io.js"],
+    "js": ["dc/inject.js", "dc/chat.js"],
     "css": ["dc/main.css"],
     "run_at": "document_end"
     },
