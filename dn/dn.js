@@ -37,4 +37,10 @@ if(postTime != oldTime){
 }
 });
 }
-dn();
+
+// Make sure Do Not Disturb is off
+chrome.storage.local.get(["dnd"],function(result){
+    if(!result.dnd){
+        dn();
+    }
+})
