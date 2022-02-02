@@ -41,6 +41,11 @@ if(postTime != oldTime){
 // Make sure Do Not Disturb is off
 chrome.storage.local.get(["dnd"],function(result){
     if(!result.dnd){
-        dn();
+        try{
+            dn();
+        }
+        catch{
+            console.log("Unable to get K12 discussion messages");
+        }
     }
 })

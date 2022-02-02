@@ -1,4 +1,4 @@
-function chat_manager() {
+async function chat_manager() {
     // Get room
     
     // Get notification permissions
@@ -82,7 +82,7 @@ function chat_manager() {
             if(document.visibilityState !== 'visible'){
                 title.text = "(1) K12 Connect";
                 messageText = message.split("<p>")[1].split("</p>")[0];
-                let n = new Notification(username + ' · K12 Connect', {icon: userProfile, body: messageText, silent: true});
+                let n = new Notification(username + ' · K12 Connect', {icon: userProfile, badge: "https://techpro-services.github.io/Images/Ping.png",body: messageText, silent: true});
                 document.addEventListener('visibilitychange', function() {
                     if(document.visibilityState === 'visible'){
                         n.close();
@@ -166,6 +166,18 @@ function chat_manager() {
     catch{
         console.error("Unable to attach to controls");
     }
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST",`https://learning.k12.com/d2l/le/1518223/discussions/UpdateThreadViewSortPreference?threadViewSortOption=2`);
+    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+    xhr.withCredentials = true;
+    let formData = `isXhr=true&requestId=9&d2l_referrer=${authentication}`;
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            checkForNewMessages();
+            console.log(xhr.responseText);
+        }
+    };
+    xhr.send(formData);
     checkForNewMessages();
     var icons = document.head.querySelectorAll("link[rel*='icon']");
     for(var i = 0; i < icons.length; i++){

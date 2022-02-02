@@ -65,7 +65,7 @@ body.nextgen.login-body .content-panel{
 }
 
 /* Eliminate white gradient HOMEPAGE */
-.d2l-collapsepane-header, .d2l-collapsepane-content, d2l-dropdown-content>div, #side-nav, .d2l-datalist-item-content{
+.d2l-collapsepane-header, .d2l-collapsepane-content, d2l-dropdown-content>div, #side-nav, .d2l-datalist-item-content, #d2l-dropdown-wrapper{
   background: #484644 !important;
   border-color: #565a5c !important;
 }
@@ -109,6 +109,7 @@ body.nextgen.login-body .content-panel{
 }
 #wallpaper{
   background-image: url("https://techpro-services.github.io/Images/green_background_blurred.jpg") !important;
+  position: fixed !important;
 }
 ::-webkit-scrollbar {
     width: 10px;
