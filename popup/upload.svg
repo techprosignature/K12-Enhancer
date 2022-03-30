@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<svg width="480" height="480" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - https://github.com/SVG-Edit/svgedit-->
+ <defs>
+  <linearGradient id="svg_9" x1="0" x2="0" y1="0" y2="1">
+   <stop id="jq_stop_5704" offset="0" stop-color="#25ff88"/>
+   <stop id="jq_stop_3326" offset="1" stop-color="#00b050"/>
+  </linearGradient>
+ </defs>
+ <g class="layer">
+  <title>Layer 1</title>
+  <rect fill="url(#svg_9)" height="480" id="svg_1" width="480" x="0" y="0"/>
+  <g id="svg_8">
+   <line fill="none" id="svg_2" stroke="#ffffff" stroke-linecap="round" stroke-width="25" x1="236" x2="236" y1="310.09" y2="113"/>
+   <line fill="none" id="svg_3" stroke="#ffffff" stroke-linecap="round" stroke-width="25" x1="157.25" x2="236" y1="174.47" y2="113"/>
+   <line fill="none" id="svg_4" stroke="#ffffff" stroke-linecap="round" stroke-width="25" x1="314.75" x2="236" y1="174.47" y2="113"/>
+   <line fill="none" id="svg_5" stroke="#ffffff" stroke-linecap="round" stroke-width="25" x1="133.5" x2="342.5" y1="367" y2="367"/>
+  </g>
+ </g>
+</svg>

@@ -142,27 +142,57 @@ if(!result.normal){
 }
 })
 
-chrome.storage.local.get(["nrtextmode"],function(result){
+chrome.storage.local.get(["nrtextmode","nrsoundmode","nrsound"],function(result){
     if(!result.nrtextmode){
         console.log("Text formatting is active");
+        let pingUrl = result.nrsound;
+        console.error(pingUrl);
+        if(pingUrl == undefined){
+            chrome.storage.local.set({nrsound: "https://www.myinstants.com/media/sounds/discord-notification.mp3"});
+            pingUrl = "https://www.myinstants.com/media/sounds/discord-notification.mp3";
+            console.log("Using default ping");
+        }
+        let ping = new Audio(result.nrsound);
         // Handle HTML changes
         let chatObserver = new MutationObserver(function(mutations){
-            mutations.forEach((mutation) => {
-                if(!mutation.addedNodes) return;
-                if(mutation.target.className.search("messages-list_messages__") != -1){
-                    console.log("CHAT EVENT");
+            for(let mutation in mutations){
+                if(!mutations[mutation].addedNodes) continue;
+                if(mutations[mutation].target.className.search("messages-list_messages__") != -1){
                     let changedMessages = document.querySelectorAll("div[class*=message_message]:last-child [class*=message_message-content]");
                     for(let i  = 0; i < changedMessages.length; i++){
                         try{
                             let changedMessage = changedMessages[i];
                             changedMessage.innerHTML = convertMarkup(changedMessage.innerHTML);
+                            if(!result.nrsoundmode){
+                                ping.pause();
+                                ping.currentTime = 0;
+                                ping.play();
+                            }
                         }
                         catch(e){
                             console.log("Error ",e);
                         }
                     }
+                    return;
                 }
-            });
+            }
+        });
+        chatContainer = document.getElementById("chat-module-container");
+        chatObserver.observe(document.body, {childList: true, subtree: true, attributes: false, characterData: false});
+    }
+    else if(!result.nrsoundmode){
+        console.log("Ping active");
+        let ping = new Audio(result.nrsound);
+        // Handle HTML changes
+        let chatObserver = new MutationObserver(function(mutations){
+            for(let mutation in mutations){
+                if(!mutations[mutation].addedNodes) continue;
+                if(mutations[mutation].target.className.search("messages-list_messages__") != -1){
+                    ping.pause();
+                    ping.currentTime = 0;
+                    ping.play();
+                }
+            }
         });
         chatContainer = document.getElementById("chat-module-container");
         chatObserver.observe(document.body, {childList: true, subtree: true, attributes: false, characterData: false});
@@ -173,38 +203,42 @@ chrome.storage.local.get(["nrlightmode"],function(result){
 if(!result.nrlightmode){
 const style = document.createElement('style');
 style.innerHTML = `
-html,body, .participants-content, div[class*=conversation-list_conversation-list-container], div[class*=conversation_conversationListContainer], .content-size-calculator, #boards-container{
+/* participants list background and chat background */
+html,body, .participants-content, div[class*=conversation-list_conversation-list-container], div[class*=conversation_conversationListContainer], .content-size-calculator, #boards-container, .popup-data-wrapper, .popup-header-container{
     color: white !important;
-    background-color: #201f1f !important;
-}
-.banners-bg-dimmer{
-    display: none !important;
-    background: url("https://techpro-services.github.io/Images/green_background_blurred.jpg") center center no-repeat !important;
-    background-size: cover;
+    background-color: #1E2421 !important;
 }
 #participantsList .participants-content .participant .participant-user-name, .custom-user-name, .custom-message-time, p[class*=message_message-content]{
     color: white !important;
 }
-.participant-settings .participant-hand-raise-icon, #participantsList .participants-content .participant .participant-moderator-mark{
+.participant-settings .participant-hand-raise-icon, .participant-settings .participant-not-present-wrapper, #participantsList .participants-content .participant .participant-moderator-mark{
     fill: white !important;
 }
 .participant:hover{
     background: #2d2c2c !important;
 }
 #participants-control-bar, div[class*=search-bar_search-container], div[class*=notifications-bar_notifications-bar], div[class*=input_chat-action-components]{
-    background: #484644 !important;
-    border-bottom: #484644 !important;
+    background: #28302B !important;
+    border-bottom: #28302B !important;
+}
+/*textbox container */
+div[class*=input_chat-action-components]{
+    border-top: #28302B !important;
 }
 .search-bar, .search-bar-text{
-    background-color: grey !important;
+    background-color: #363E39 !important;
+    border-color: black !important;
 }
-textarea[class*=input_input], div[class*=input_input], #active-image-container, #whiteboard-container, #annotations-tooltip-container, #whiteboard-tools-container, .tool-button-container, .tool-color-container{
-    background-color: grey !important;
+textarea[class*=input_input],  div[class*=input_input], #active-image-container, #whiteboard-container, #annotations-tooltip-container, #whiteboard-tools-container, .tool-button-container, .tool-color-container{
+    background-color: #424945 !important;
     color: white !important;
     caret-color: white !important;
 }
 div[class*=message_recive-message], div[class*=input_reply-message]{
-    background-color: grey;
+    background-color: #424945;
+}
+div[class*='message_sent-message']{
+    background: #00b050 !important;
 }
 textarea[class*=input_input]::placeholder{
     color: white !important;
@@ -223,7 +257,7 @@ textarea[class*=input_input]::placeholder{
 ::-webkit-scrollbar-thumb:hover {
     background: #00b050;
 }
-.allNotes, .tool-list-item, .sortable-item-title {
+.allNotes, .sortable-item-title {
     color: black !important;
 }
 `;
