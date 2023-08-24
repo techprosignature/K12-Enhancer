@@ -129,9 +129,9 @@
 .animate-left{
     animation-direction: alternate;
     animation-name: move-left;
-    animation-duration: 6s;
+    animation-duration: 8s;
     animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    animation-timing-function: ease-in-out;
 }
 @keyframes move-left{
     from {transform: translateX(20px);}

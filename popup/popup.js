@@ -1,7 +1,6 @@
 // Attach buttons
 var nrlightmode = document.getElementById("nr-darkmode");
 var k12lightmode = document.getElementById("k12-darkmode");
-var dnd = document.getElementById("notification");
 var normal = document.getElementById("enhancement");
 var nrtextmode = document.getElementById("nr-textmode");
 var nrsoundmode = document.getElementById("nr-soundmode");
@@ -11,7 +10,6 @@ var nrsound = document.getElementById("nr-sound");
 chrome.storage.local.get(['nrlightmode','k12lightmode','dnd','normal','nrtextmode','nrsoundmode','nrsound'], function(result) {
     nrlightmode.checked = !result.nrlightmode;
     k12lightmode.checked = !result.k12lightmode;
-    dnd.checked = !result.dnd;
     normal.checked = !result.normal;
     nrtextmode.checked = !result.nrtextmode;
     nrsoundmode.checked = !result.nrsoundmode;
@@ -23,9 +21,6 @@ nrlightmode.addEventListener('click',function(){
 })
 k12lightmode.addEventListener('click',function(){
     chrome.storage.local.set({k12lightmode: !k12lightmode.checked})
-})
-dnd.addEventListener('click',function(){
-    chrome.storage.local.set({dnd: !dnd.checked})
 })
 normal.addEventListener('click',function(){
     chrome.storage.local.set({normal: !normal.checked})

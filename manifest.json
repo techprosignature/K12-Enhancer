@@ -1,10 +1,9 @@
 {
     "manifest_version": 3,
-
-    "name": "K12 Enhancer by TechPro Services",
+    "name": "K12 Enhancer by TechPro Signature",
     "short_name": "K12 Enhancer",
-    "description": "K12 Enhancer applies a green gradient to NewRow and allows you to chat with your classmates in school discussions in near-realtime.",
-    "version": "1.7.1",
+    "description": "K12 Enhancer provides you with a smoother experience in K12's learning platform and enhances your NewRow experience with text formatting and a custom-made dark mode",
+    "version": "1.8.0",
     "homepage_url": "https://techpro-services.github.io/",
     "icons": {
         "1280": "img/K12 Enhancer.png"
@@ -15,38 +14,60 @@
         "default_popup": "popup/index.html"
     },
     "content_scripts": [
-    {
-    "matches": ["https://learning.k12.com/*"],
-    "js": ["dn/dn.js"],
-    "run_at": "document_end"
-    },
-    {
-    "matches": ["https://learning.k12.com/*","https://login-learn.k12.com/*"],
-    "js": ["K12/K12.js"],
-    "all_frames": true
-    },
-    {
-    "matches": ["https://learning.k12.com/d2l/home/*"],
-    "js": ["gradebook/grades.js"],
-    "css": ["gradebook/main.css"],
-    "run_at": "document_end"
-    },
-    {
-    "matches": ["https://learning.k12.com/d2l/le/*/discussions/threads/*"],
-    "js": ["dc/inject.js", "dc/chat.js"],
-    "css": ["dc/main.css"],
-    "run_at": "document_end"
-    },
-    {
-    "matches": ["https://smart.newrow.com/*", "https://www.newrow.com/"],
-    "js": ["newrow/newrow.js"],
-    "all_frames": true
-    }
-    ],
-    "web_accessible_resources": [
-        {"resources": ["img/MaskGroup.svg","img/SquidPickleStudios.svg"],
-            "matches":["https://learning.k12.com/*"]
+        {
+            "matches": [
+                "https://learning.k12.com/*",
+                "https://login-learn.k12.com/*"
+            ],
+            "js": [
+                "K12/K12.js"
+            ],
+            "all_frames": true
+        },
+        {
+            "matches": [
+                "https://login-learn.k12.com/*"
+            ],
+            "js": [
+                "ClassConnectSync/scc-beta.js"
+            ],
+            "run_at": "document_end"
+        },
+        {
+            "matches": [
+                "https://learning.k12.com/d2l/home/*"
+            ],
+            "js": [
+                "ActualGrade/grades.js"
+            ],
+            "css": [
+                "ActualGrade/main.css"
+            ],
+            "run_at": "document_end"
+        },
+        {
+            "matches": [
+                "https://smart.newrow.com/*",
+                "https://www.newrow.com/"
+            ],
+            "js": [
+                "newrow/newrow.js"
+            ],
+            "all_frames": true
         }
     ],
-    "permissions": ["storage"]
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "img/MaskGroup.svg",
+                "img/SquidPickleStudios.svg"
+            ],
+            "matches": [
+                "https://learning.k12.com/*"
+            ]
+        }
+    ],
+    "permissions": [
+        "storage"
+    ]
 }
