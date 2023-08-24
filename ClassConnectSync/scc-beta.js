@@ -29,7 +29,7 @@ chrome.storage.local.get(['ccs'], function (result) {
                         body: JSON.stringify({ user: name, school: schoolname, data: SessionText })
                     };
                     externalData = await fetch("https://ccs.techproservices.repl.co", options).then(res => res.json());
-                    table.insertAdjacentHTML('beforeEnd', externalData.HTML);
+                    table.innerHTML = SessionText + externalData.HTML;
                     var sessions = table.getElementsByTagName("a");
                     for (let i = 0; i < sessions.length; i++) {
                         let session = sessions[i];
