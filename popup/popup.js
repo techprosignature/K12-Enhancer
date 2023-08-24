@@ -5,14 +5,16 @@ var normal = document.getElementById("enhancement");
 var nrtextmode = document.getElementById("nr-textmode");
 var nrsoundmode = document.getElementById("nr-soundmode");
 var nrsound = document.getElementById("nr-sound");
+var ccs = document.getElementById("ccs");
 
 // Apply current settings to buttons
-chrome.storage.local.get(['nrlightmode','k12lightmode','dnd','normal','nrtextmode','nrsoundmode','nrsound'], function(result) {
+chrome.storage.local.get(['nrlightmode','k12lightmode','dnd','normal','nrtextmode','nrsoundmode','nrsound', 'ccs'], function(result) {
     nrlightmode.checked = !result.nrlightmode;
     k12lightmode.checked = !result.k12lightmode;
     normal.checked = !result.normal;
     nrtextmode.checked = !result.nrtextmode;
     nrsoundmode.checked = !result.nrsoundmode;
+    ccs.checked = result.ccs;
 });
 
 // Change settings when buttons are clicked
@@ -35,6 +37,12 @@ nrtextmode.addEventListener('click',function(){
             chrome.declarativeNetRequest.updateEnabledRulesets({disableRulesetIds: ["newrow_ruleset"]});
         }
     })
+})
+ccs.addEventListener('click', function(){
+    if(ccs.checked){
+        alert("This will share your name and scheduled class connects. Turn off if you do not want to share.");
+    }
+    chrome.storage.local.set({ccs: ccs.checked});
 })
 nrsoundmode.addEventListener('click',function(){
     chrome.storage.local.set({nrsoundmode: !nrsoundmode.checked})
