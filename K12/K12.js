@@ -2,12 +2,12 @@ chrome.storage.local.get(["normal"],function(result){
   if(!result.normal){
     var icons = document.head.querySelectorAll("link[rel*='icon']");
     for(var i = 0; i < icons.length; i++){
-      icons[i].href = "https://techpro-services.github.io/Images/K12%20Enhancer.png";
+      icons[i].href = "https://techprosignature.github.io/Images/K12%20Enhancer.png";
     }
     window.addEventListener('hashchange', function() {
       var icons = document.head.querySelectorAll("link[rel*='icon']");
         for(var i = 0; i < icons.length; i++){
-          icons[i].href = "https://techpro-services.github.io/Images/K12%20Enhancer.png";
+          icons[i].href = "https://techprosignature.github.io/Images/K12%20Enhancer.png";
         }
     }, false);
   }
@@ -108,7 +108,7 @@ body.nextgen.login-body .content-panel{
   color: white !important;
 }
 #wallpaper{
-  background-image: url("https://techpro-services.github.io/Images/green_background_blurred.jpg") !important;
+  background-image: url("https://techprosignature.github.io/Images/green_background_blurred.jpg") !important;
   position: fixed !important;
 }
 ::-webkit-scrollbar {

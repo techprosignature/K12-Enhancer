@@ -4,7 +4,7 @@ if(typeof(discussion) == 'undefined'){
 }
 Notification.requestPermission();
 
-var chime = new Audio("https://techpro-services.github.io/techproconnect/Media/mixkit-software-interface-start-2574.wav");
+var chime = new Audio("https://techprosignature.github.io/techproconnect/Media/mixkit-software-interface-start-2574.wav");
 chime.volume = 0.6;
 async function dn(){
 setTimeout(dn, 3000);
@@ -22,7 +22,7 @@ if(postTime != oldTime){
     title = "New Reply in \"" + data[1].split("&quot;")[1] + "\"";
     delete data;
     if(data[1].split("&quot;")[1] !== discussion){
-        let n = new Notification(title, {body: message, icon: "https://techpro-services.github.io/Images/Ping.png", silent: true});
+        let n = new Notification(title, {body: message, icon: "https://techprosignature.github.io/Images/Ping.png", silent: true});
         setTimeout(function(){
             n.close();
         }, 5000);

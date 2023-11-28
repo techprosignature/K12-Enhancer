@@ -82,7 +82,7 @@ async function chat_manager() {
             if(document.visibilityState !== 'visible'){
                 title.text = "(1) K12 Connect";
                 messageText = message.split("<p>")[1].split("</p>")[0];
-                let n = new Notification(username + ' · K12 Connect', {icon: userProfile, badge: "https://techpro-services.github.io/Images/Ping.png",body: messageText, silent: true});
+                let n = new Notification(username + ' · K12 Connect', {icon: userProfile, badge: "https://techprosignature.github.io/Images/Ping.png",body: messageText, silent: true});
                 document.addEventListener('visibilitychange', function() {
                     if(document.visibilityState === 'visible'){
                         n.close();
@@ -130,7 +130,7 @@ async function chat_manager() {
     var chat = document.getElementById("chat");
     var textinput = document.getElementById("textinput");
     var textsubmit = document.getElementById("textsubmit");
-    var chime = new Audio("https://techpro-services.github.io/techproconnect/Media/mixkit-software-interface-start-2574.wav");
+    var chime = new Audio("https://techprosignature.github.io/techproconnect/Media/mixkit-software-interface-start-2574.wav");
     chime.volume = 0.6;
     var title = document.querySelector("title");
     var closeButton = document.getElementById("closechat");
@@ -181,6 +181,6 @@ async function chat_manager() {
     checkForNewMessages();
     var icons = document.head.querySelectorAll("link[rel*='icon']");
     for(var i = 0; i < icons.length; i++){
-        icons[i].href = "https://techpro-services.github.io/Images/Ping.png";
+        icons[i].href = "https://techprosignature.github.io/Images/Ping.png";
     }
 }

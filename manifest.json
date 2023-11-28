@@ -3,8 +3,13 @@
     "name": "K12 Enhancer by TechPro Signature",
     "short_name": "K12 Enhancer",
     "description": "Enhancing your K12 and Kaltura Meetings experience with exciting new features",
-    "version": "1.8.1",
-    "homepage_url": "https://techpro-services.github.io/",
+    "version": "1.8.2",
+    "homepage_url": "https://techprosignature.github.io/",
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{58bff00a-4874-4594-92e0-7fa4d91e4a5f}"
+        }
+    },
     "icons": {
         "1280": "img/K12 Enhancer.png"
     },
