@@ -117,7 +117,7 @@ chrome.storage.local.get(["normal"],function(result){
 if(!result.normal){
     var icons = document.head.querySelectorAll("link[rel*='icon']");
     for(var i = 0; i < icons.length; i++){
-        icons[i].href = "https://techpro-services.github.io/Images/newrow_fullsize.png";
+        icons[i].href = chrome.runtime.getURL("img/newrow_fullsize.png");
     }
     var CLASS = setInterval(function(){
     try{

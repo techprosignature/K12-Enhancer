@@ -3,7 +3,7 @@
     "name": "K12 Enhancer by TechPro Signature",
     "short_name": "K12 Enhancer",
     "description": "Enhancing your K12 and Kaltura Meetings experience with exciting new features",
-    "version": "1.8.2",
+    "version": "1.8.3",
     "homepage_url": "https://techprosignature.github.io/",
     "browser_specific_settings": {
         "gecko": {
@@ -11,10 +11,10 @@
         }
     },
     "icons": {
-        "1280": "img/K12 Enhancer.png"
+        "1280": "img/K12_Enhancer.png"
     },
     "action": {
-        "default_icon": "img/K12 Enhancer.png",
+        "default_icon": "img/K12_Enhancer.png",
         "default_title": "K12 Enhancer Options",
         "default_popup": "popup/index.html"
     },
@@ -65,10 +65,28 @@
         {
             "resources": [
                 "img/MaskGroup.svg",
-                "img/SquidPickleStudios.svg"
+                "img/SquidPickleStudios.svg",
+                "img/logo_animated.svg"
             ],
             "matches": [
                 "https://learning.k12.com/*"
+            ]
+        },
+        {
+            "resources": [
+                "img/K12_Enhancer.png"
+            ],
+            "matches": [
+                "https://login-learn.k12.com/*",
+                "https://learning.k12.com/*"
+            ]
+        },
+        {
+            "resources": [
+                "img/newrow_fullsize.png"
+            ],
+            "matches": [
+                "https://smart.newrow.com/*"
             ]
         }
     ],

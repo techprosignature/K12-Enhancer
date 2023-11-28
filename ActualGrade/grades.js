@@ -8,9 +8,10 @@ async function main(){
     var coursePromise = getGrade(document.location.href.split("/")[5]);
     var popup = document.createElement("div"), loader = document.createElement("div"), colored = document.createElement("div");
     popup.id = "gradePopup";
-    colored.id = "techpro-main"
-    popup.style.backgroundImage = `url(${chrome.runtime.getURL("img/MaskGroup.svg")})`
-    loader.id = "techpro-loader"
+    colored.id = "techpro-main";
+    popup.style.backgroundImage = `url(${chrome.runtime.getURL("img/MaskGroup.svg")})`;
+    loader.id = "techpro-loader";
+    loader.style.backgroundImage = `url(${chrome.runtime.getURL("img/logo_animated.svg")})`;
     popup.insertAdjacentElement("afterbegin",loader)
     document.body.insertAdjacentElement("afterBegin",popup);
     gradeData = await coursePromise;

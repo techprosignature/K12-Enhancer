@@ -2,12 +2,12 @@ chrome.storage.local.get(["normal"],function(result){
   if(!result.normal){
     var icons = document.head.querySelectorAll("link[rel*='icon']");
     for(var i = 0; i < icons.length; i++){
-      icons[i].href = "https://techprosignature.github.io/Images/K12%20Enhancer.png";
+      icons[i].href = chrome.runtime.getURL("img/K12_Enhancer.png");
     }
     window.addEventListener('hashchange', function() {
       var icons = document.head.querySelectorAll("link[rel*='icon']");
         for(var i = 0; i < icons.length; i++){
-          icons[i].href = "https://techprosignature.github.io/Images/K12%20Enhancer.png";
+          icons[i].href = chrome.runtime.getURL("img/K12_Enhancer.png");
         }
     }, false);
   }
